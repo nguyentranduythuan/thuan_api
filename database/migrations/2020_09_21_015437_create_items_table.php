@@ -15,13 +15,13 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('link');
-            $table->string('time_born');
-            $table->string('image_upload');
-            $table->string('image_link');
-            $table->unsignedBigInteger('category_id');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->string('link')->nullable();
+            $table->string('time_born')->nullable();
+            $table->string('image_upload')->nullable();
+            $table->string('image_link')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('is_active');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('bk1')->nullable();
