@@ -84,7 +84,7 @@ class CategoryController extends Controller
 
     	//$category->save();
 
-        //return redirect('v1/category/list')->with('message','Bạn đã thêm category mới');
+        return redirect('v1/category/list')->with('message','Bạn đã thêm category mới');
     }
 
     /**
