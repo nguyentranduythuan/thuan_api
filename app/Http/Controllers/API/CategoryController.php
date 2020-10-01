@@ -42,11 +42,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-    	$category = new Category;
-        $category->name = $request->name;
-        $category->description = $request->description;
-        // $category->image_up = $image_name;
-        $category->image_link = $request->link;
+    	// $category = new Category;
+     //    $category->name = $request->name;
+     //    $category->description = $request->description;
+     //    // $category->image_up = $image_name;
+     //    $category->image_link = $request->link;
         
     	$tmp                = createdFolderCategory();
         $dir_final          = $tmp['dir_final'];
@@ -65,12 +65,21 @@ class CategoryController extends Controller
             $file->move($dir_final.$folder, $file_name);
             $file_name = $folder.'/'.$file_name;
 
-            $category->image_up   = $file_name;
+            //$category->image_up   = $file_name;
+            $category = Category::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'image_up' => $file_name,
+                'image_link' => $request->link,
+                'is_active' => $request->is_active
+            ]);
+
+            return response()->json([ 'category' => $category ], 201);
         }
 
-    	$category->save();
+    	//$category->save();
 
-        return redirect('v1/category/list')->with('message','Bạn đã thêm category mới');
+        //return redirect('v1/category/list')->with('message','Bạn đã thêm category mới');
     }
 
     /**
