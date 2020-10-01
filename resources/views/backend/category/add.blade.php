@@ -28,6 +28,7 @@
 	      	<div class="card-body">
 	      		<form action="{{ route('v1.category.store') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 	      			@csrf
+	      			{{ method_field('PUT') }}
 	      			<div class="row">
 			          	<div class="col-md-12">
 				            <div class="form-group">
